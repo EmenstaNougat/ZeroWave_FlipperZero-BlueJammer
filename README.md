@@ -96,7 +96,7 @@ The ZeroWave is designed as an **educational tool** to explore RF communication,
 Download the latest `.bin` from the Releases section of the repo and flash it using `esptool.py` or a suitable ESP32 flash tool.
 
 ```bash
-esptool.py --chip esp32c3 write_flash 0x0000 ZeroWave_Firmware.bin
+esptool.py --chip esp32c3 write_flash 0x0000 ZeroWave.ino.bin
 ````
 
 ### Step 2: Connect to the Flipper Zero
