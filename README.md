@@ -117,7 +117,7 @@ Use the directional pad to select your jamming mode:
 OK = Idle mode (no jamming)  
 Back = Exit & power down board  
 ```
-
+<img width="2160" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae6c35e2-0b2b-4707-91e5-ed9c3225f4f6" />
 The firmware will handle powering down the 5 V rail safely when you exit, ensuring your hardware is not left in an unsafe state.
 
 ---
