@@ -120,6 +120,9 @@ Back = Exit & power down board
 <img width="2160" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae6c35e2-0b2b-4707-91e5-ed9c3225f4f6" />
 The firmware will handle powering down the 5 V rail safely when you exit, ensuring your hardware is not left in an unsafe state.
 
+- This application interface was created using Lopaka (see https://lopaka.app), a browser‑based graphics‑editor tool tailored for embedded systems (including platforms such as Flipper Zero, Arduino, ESP32, STM32). It enables pixel‑perfect drawing of shapes, text and images and then auto‑generates ready‑to‑use C/C++ code for display libraries like U8g2, AdafruitGFX or the Flipper UI framework. 
+I have used Lopaka to rapidly prototype and export the menu screen you interact with on the device, ensuring a consistent look and feel across hardware and software layers.
+
 ---
 
 ## 🧩 Technical Details & Architecture
