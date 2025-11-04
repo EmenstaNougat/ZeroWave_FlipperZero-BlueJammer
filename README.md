@@ -95,8 +95,17 @@ The ZeroWave is designed as an **educational tool** to explore RF communication,
 ### Step 1: Flash the Firmware  
 Download the latest `.bin` from the Releases section of the repo and flash it using `esptool.py` or a suitable ESP32 flash tool.
 
+Open up this path: ZeroWave_FlipperZero-BlueJammer-main\ZeroWave_FlipperZero-BlueJammer-main\ZeroWave-firmware_files
+
+Out of this folder, continue with the flash below:
+
+Make sure to change the COM port (COM16) to the corresponding port that your system recognizes it at!
 ```bash
-esptool.py --chip esp32c3 write_flash 0x0000 ZeroWave.ino.bin
+python -m esptool --chip esp32c3 --port COM16 --baud 115200 write_flash ^
+  0x0 ZeroWave.ino.bootloader.bin ^
+  0x8000 ZeroWave.ino.partitions.bin ^
+  0x10000 ZeroWave.ino.bin
+
 ````
 
 ### Step 2: Connect to the Flipper Zero
