@@ -25,7 +25,7 @@
 ## 🧩 Overview
 
 **ZeroWave_FlipperZero-BlueJammer** is the official firmware port of the **[ESP32‑BlueJammer](https://github.com/EmenstaNougat/ESP32-BlueJammer)** project, built to run on the **[ZeroWave extension board](https://www.elecrow.com/flipper-zero-zerowave-extension-board.html)** for the Flipper Zero.
-<img width="1074" height="506" alt="image" src="https://github.com/user-attachments/assets/1186de40-0b2a-48d5-8ed8-cf499c339227" />
+<img width="1184" height="549" alt="image" src="https://github.com/user-attachments/assets/df4a8f9e-bf8a-46fc-823f-87e038e8ae3b" />
 This project allows you to use the Flipper Zero as a user‑interface and control hub for the jamming hardware, enabling selectable modes via the directional pad while managing power safely.
 
 The ZeroWave is designed as an **educational tool** to explore RF communication, protocol interference, and hardware control, under the strict caveat of responsible usage and full legal compliance.
