@@ -25,7 +25,7 @@
 ## 🧩 Overview
 
 **ZeroWave_FlipperZero-BlueJammer** is the official firmware port of the **[ESP32‑BlueJammer](https://github.com/EmenstaNougat/ESP32-BlueJammer)** project, built to run on the **[ZeroWave extension board](https://www.elecrow.com/flipper-zero-zerowave-extension-board.html)** for the Flipper Zero.
-<img width="1074" height="506" alt="image" src="https://github.com/user-attachments/assets/1186de40-0b2a-48d5-8ed8-cf499c339227" />
+<img width="1184" height="549" alt="image" src="https://github.com/user-attachments/assets/df4a8f9e-bf8a-46fc-823f-87e038e8ae3b" />
 This project allows you to use the Flipper Zero as a user‑interface and control hub for the jamming hardware, enabling selectable modes via the directional pad while managing power safely.
 
 The ZeroWave is designed as an **educational tool** to explore RF communication, protocol interference, and hardware control, under the strict caveat of responsible usage and full legal compliance.
@@ -47,7 +47,7 @@ The ZeroWave is designed as an **educational tool** to explore RF communication,
   The firmware handles enabling the 5 V rail that powers the RF modules, ensuring stable voltage and safe operation.
 
 - 🔐 **Dual nRF24 Interface Support**  
-  Supports two RF modules (e.g., GT24‑Mini or Ebyte E01‑2G4M27SX), enabling effective channel interferance across the whole 2.4 GHz band.
+  Supports two RF modules (GT24‑Mini), enabling effective channel interferance across the whole 2.4 GHz band.
 
   **Example device‑types that can be affected include:**
 
@@ -77,14 +77,13 @@ The ZeroWave is designed as an **educational tool** to explore RF communication,
 | Component                                | Description / Notes                              | Link (affilate)                                                      |
 |------------------------------------------|--------------------------------------------------|----------------------------------------------------------------------|
 | **ZeroWave Extension Board**            | The custom PCB that hosts the C3-Supermini and RF modules | [Elecrow ZeroWave Board](https://www.elecrow.com/flipper-zero-zerowave-extension-board.html) |
-| **ESP32C3‑Supermini**                   | The MCU running the firmware                      | [AliExpress](https://s.click.aliexpress.com/e/_c39ycjND)              |
-| **2× GT24‑Mini nRF modules**            | Option A: RF modules for jamming                  | [AliExpress](https://s.click.aliexpress.com/e/_c3i1ugBz)              |
-| **OR 2× Ebyte E01‑2G4M27SX modules**    | Option B: higher spec modules                      | [AliExpress](https://s.click.aliexpress.com/e/_EQ1G6Pw)              |
-| **RP‑SMA Connector (Right Foot 13.5, SMA‑KE Inner Hole)** | Antenna connection                            | [AliExpress](https://s.click.aliexpress.com/e/_EwDocU4) |
-| **Capacitor Set (0805, 720pcs, 36 Values)** | For decoupling & signal stability              | [AliExpress](https://s.click.aliexpress.com/e/_ExudcGk)              |
-| **U.FL IPX Connector**                  | For antenna cabling                              | [AliExpress](https://s.click.aliexpress.com/e/_EHvWoP2)              |
-| **Male & Female Pin Headers**           | For board headers / connections                  | [AliExpress](https://s.click.aliexpress.com/e/_EygfqSo)              |
-| **U.FL Pigtails**                       | Antenna cables                                   | [AliExpress](https://s.click.aliexpress.com/e/_Ezq6xJO)              |
+| **ESP32C3‑Supermini**                   | The MCU running the firmware                      | [AliExpress](https://s.click.aliexpress.com/e/_c39ycjND)             |
+| **2× GT24‑Mini nRF modules**            | RF modules for jamming                            | [AliExpress](https://s.click.aliexpress.com/e/_c3i1ugBz)             |
+| **RP‑SMA Connector (Right Foot 13.5, SMA‑KE Inner Hole)** | Antenna connection              | [AliExpress](https://s.click.aliexpress.com/e/_EwDocU4)              |
+| **Capacitor Set (0805, 720pcs, 36 Values)** | For decoupling & signal stability             | [AliExpress](https://s.click.aliexpress.com/e/_ExudcGk)              |
+| **U.FL IPX Connector**                  | For antenna cabling                               | [AliExpress](https://s.click.aliexpress.com/e/_EHvWoP2)              |
+| **Male & Female Pin Headers**           | For board headers / connections                   | [AliExpress](https://s.click.aliexpress.com/e/_EygfqSo)              |
+| **U.FL Pigtails**                       | Antenna cables                                    | [AliExpress](https://s.click.aliexpress.com/e/_Ezq6xJO)              |
 
 > ⚠️ Ensure proper antenna configuration and safe soldering practices. The RF modules and 2.4 GHz band are sensitive; improper setup can cause unwanted interference or hardware damage.
 
@@ -95,8 +94,17 @@ The ZeroWave is designed as an **educational tool** to explore RF communication,
 ### Step 1: Flash the Firmware  
 Download the latest `.bin` from the Releases section of the repo and flash it using `esptool.py` or a suitable ESP32 flash tool.
 
+Open up this path: ZeroWave_FlipperZero-BlueJammer-main\ZeroWave_FlipperZero-BlueJammer-main\ZeroWave-firmware_files
+
+Out of this folder, continue with the flash below:
+
+Make sure to change the COM port (COM16) to the corresponding port that your system recognizes it at!
 ```bash
-esptool.py --chip esp32c3 write_flash 0x0000 ZeroWave.ino.bin
+python -m esptool --chip esp32c3 --port COM16 --baud 115200 write_flash ^
+  0x0 ZeroWave.ino.bootloader.bin ^
+  0x8000 ZeroWave.ino.partitions.bin ^
+  0x10000 ZeroWave.ino.bin
+
 ````
 
 ### Step 2: Connect to the Flipper Zero
